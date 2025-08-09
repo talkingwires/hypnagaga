@@ -3,9 +3,11 @@
     <div class="cluster gutter-xs">
       <nav class="cluster text-step-0" aria-label="{{ meta.navigation.ariaBottom }}">
         &copy; {% year %}
-        <a href="/" {{ indicateActiveHome }}
-          ><span class="font-display">{{ meta.siteName }}</span> <small>{{ pkg.version }}</small> 
-        </a>
+        <a
+          href="{{ repoUrl }}/commit/{{ gitCommit.fullHash }}"
+          title="Commit: {{ gitCommit.message }} ({{ gitCommit.time }})"
+          ><span class="font-display">{{ meta.siteName }}</span> <small>{{ gitCommit.shortHash }}</small>
+        </a> 
 
         {% for item in navigation.bottom %}
           <a

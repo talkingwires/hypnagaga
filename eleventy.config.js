@@ -20,6 +20,7 @@ import events from './src/_config/events.js';
 import filters from './src/_config/filters.js';
 import plugins from './src/_config/plugins.js';
 import shortcodes from './src/_config/shortcodes.js';
+import pkg from './package.json' assert { type: 'json' };
 
 export default async function (eleventyConfig) {
   // --------------------- Events: before build
@@ -42,6 +43,11 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection('allPosts', getAllPosts);
   eleventyConfig.addCollection('showInSitemap', showInSitemap);
   eleventyConfig.addCollection('tagList', tagList);
+
+  // --------------------- Global Data
+  const repoUrl = pkg.repository.url.replace(/\.git$/, '');
+  eleventyConfig.addGlobalData('repoUrl', repoUrl);
+  eleventyConfig.addGlobalData('gitCommit', events.getLatestCommitInfo());
 
   // ---------------------  Plugins
   eleventyConfig.addPlugin(plugins.htmlConfig);
