@@ -22,6 +22,13 @@ import plugins from './src/_config/plugins.js';
 import shortcodes from './src/_config/shortcodes.js';
 
 export default async function (eleventyConfig) {
+  // --------------------- Events: before build
+  eleventyConfig.on('eleventy.before', async () => {
+    await events.buildAllCss();
+    await events.buildAllJs();
+  });
+
+  // --------------------- custom wtach targets
   eleventyConfig.addWatchTarget('./src/assets/**/*.{css,js,svg,png,jpeg}');
   eleventyConfig.addWatchTarget('./src/_includes/**/*.{webc}');
 
@@ -38,8 +45,6 @@ export default async function (eleventyConfig) {
 
   // ---------------------  Plugins
   eleventyConfig.addPlugin(plugins.htmlConfig);
-  eleventyConfig.addPlugin(plugins.cssConfig);
-  eleventyConfig.addPlugin(plugins.jsConfig);
   eleventyConfig.addPlugin(plugins.drafts);
 
   eleventyConfig.addPlugin(plugins.EleventyRenderPlugin);
@@ -47,7 +52,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(plugins.syntaxHighlight);
 
   eleventyConfig.addPlugin(plugins.webc, {
-    components: ['./src/_includes/webc/*.webc'],
+    components: ['./src/_includes/webc/**/*.webc'],
     useTransform: true
   });
 
