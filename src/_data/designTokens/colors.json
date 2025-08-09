@@ -1,6 +1,6 @@
 {
   "title": "Colors",
-  "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and vibrant colors are converted to color palettes, fixed colors are kept as they are",
+  "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and vibrant colors are converted to color palettes, fixed colors are kept as they are. Run 'npm run colors' after defining base color values in src/_data/designTokens/colorsBase.json.",
   "items": [
     {
       "name": "Gray 100",
@@ -39,6 +39,150 @@
       "value": "#161616"
     },
     {
+      "name": "Palatinate 100",
+      "value": "#fff5fe"
+    },
+    {
+      "name": "Palatinate 200",
+      "value": "#ece0eb"
+    },
+    {
+      "name": "Palatinate 300",
+      "value": "#b5aab4"
+    },
+    {
+      "name": "Palatinate 400",
+      "value": "#8c798b"
+    },
+    {
+      "name": "Palatinate 500",
+      "value": "#715b6f"
+    },
+    {
+      "name": "Palatinate 600",
+      "value": "#563e55"
+    },
+    {
+      "name": "Palatinate 700",
+      "value": "#463346"
+    },
+    {
+      "name": "Palatinate 800",
+      "value": "#382737"
+    },
+    {
+      "name": "Palatinate 900",
+      "value": "#1e101e"
+    },
+    {
+      "name": "Midnight 100",
+      "value": "#fbf6ff"
+    },
+    {
+      "name": "Midnight 200",
+      "value": "#e7e2ec"
+    },
+    {
+      "name": "Midnight 300",
+      "value": "#b1abb5"
+    },
+    {
+      "name": "Midnight 400",
+      "value": "#857c8d"
+    },
+    {
+      "name": "Midnight 500",
+      "value": "#695e72"
+    },
+    {
+      "name": "Midnight 600",
+      "value": "#4e4257"
+    },
+    {
+      "name": "Midnight 700",
+      "value": "#3f3648"
+    },
+    {
+      "name": "Midnight 800",
+      "value": "#322a39"
+    },
+    {
+      "name": "Midnight 900",
+      "value": "#1a131f"
+    },
+    {
+      "name": "Pale 100",
+      "value": "#faf7fc"
+    },
+    {
+      "name": "Pale 200",
+      "value": "#e7e3e9"
+    },
+    {
+      "name": "Pale 300",
+      "value": "#b0acb2"
+    },
+    {
+      "name": "Pale 400",
+      "value": "#847d87"
+    },
+    {
+      "name": "Pale 500",
+      "value": "#67606b"
+    },
+    {
+      "name": "Pale 600",
+      "value": "#4c4451"
+    },
+    {
+      "name": "Pale 700",
+      "value": "#3e3842"
+    },
+    {
+      "name": "Pale 800",
+      "value": "#312b34"
+    },
+    {
+      "name": "Pale 900",
+      "value": "#19141b"
+    },
+    {
+      "name": "Slate 100",
+      "value": "#f6f9fc"
+    },
+    {
+      "name": "Slate 200",
+      "value": "#e2e5e8"
+    },
+    {
+      "name": "Slate 300",
+      "value": "#abaeb1"
+    },
+    {
+      "name": "Slate 400",
+      "value": "#7c8186"
+    },
+    {
+      "name": "Slate 500",
+      "value": "#5e646a"
+    },
+    {
+      "name": "Slate 600",
+      "value": "#42484f"
+    },
+    {
+      "name": "Slate 700",
+      "value": "#363b41"
+    },
+    {
+      "name": "Slate 800",
+      "value": "#2a2e33"
+    },
+    {
+      "name": "Slate 900",
+      "value": "#13161a"
+    },
+    {
       "name": "Pink",
       "value": "#dd4462"
     },
@@ -61,6 +205,46 @@
     {
       "name": "Gold Subdued",
       "value": "#f1c15b"
+    },
+    {
+      "name": "Purple",
+      "value": "#c056ff"
+    },
+    {
+      "name": "Purple Subdued",
+      "value": "#b768ea"
+    },
+    {
+      "name": "Fuschia",
+      "value": "#ff00ff"
+    },
+    {
+      "name": "Fuschia Subdued",
+      "value": "#ee4eed"
+    },
+    {
+      "name": "Magenta",
+      "value": "#ff1dce"
+    },
+    {
+      "name": "Magenta Subdued",
+      "value": "#ee4fc4"
+    },
+    {
+      "name": "Lime",
+      "value": "#CEFF1D"
+    },
+    {
+      "name": "Lime Subdued",
+      "value": "#d3fc68"
+    },
+    {
+      "name": "Teal",
+      "value": "#1DCEFF"
+    },
+    {
+      "name": "Teal Subdued",
+      "value": "#5acbf2"
     }
   ]
 }

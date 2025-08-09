@@ -16,6 +16,7 @@ body {
   font-size: var(--size-step-0);
   font-weight: var(--font-regular);
   font-size-adjust: from-font;
+
   line-height: var(--leading-standard);
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -31,10 +32,32 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: var(--font-extra-bold);
+  font-weight: var(--font-semibold);
+  /**font-variation-settings: "opsz" 36; **/
   line-height: var(--leading-fine);
   letter-spacing: var(--tracking-s);
 }
+
+/**
+h1::first-letter,
+h2::first-letter,
+h3::first-letter {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+	
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--color-text);
+  text-shadow: 
+          -2px -2px 2px var(--color-bg),
+          -6px -6px var(--color-tertiary),
+						2px 2px 2px var(--color-bg),
+            12px 6px var(--color-primary);            
+}
+**/
 
 h1 {
   font-size: var(--size-step-6);

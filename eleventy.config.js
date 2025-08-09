@@ -1,5 +1,5 @@
 /**
- * Most adjustments must be made in `./src/_config/*`
+ * Most adjustments must be made in `./src/_config/*` 
  *
  * Hint VS Code for eleventyConfig autocompletion.
  * © Henry Desroches - https://gist.github.com/xdesro/69583b25d281d055cd12b144381123bf
@@ -86,9 +86,25 @@ export default async function (eleventyConfig) {
   eleventyConfig.addShortcode('image', shortcodes.imageShortcode);
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
-  // --------------------- Events ---------------------
+  // Custom shortcode for the post feature image to add pagefind attribute
+  eleventyConfig.addAsyncShortcode('featureImage', async (src, alt, credit) => {
+    // call the original image shortcode with arguments for a feature image
+    const imageHtml = await shortcodes.imageShortcode(src, alt, credit, 'eager', 'feature');
+    if (imageHtml) {
+      // inject the pagefind attribute into the <img> tag
+      return imageHtml.replace('<img', '<img data-pagefind-meta="image[src]"');
+    }
+    return '';
+  });
+
+  // --------------------- Events --------------------- 
   if (process.env.ELEVENTY_RUN_MODE === 'serve') {
     eleventyConfig.on('eleventy.after', events.svgToJpeg);
+  }
+
+  // Pagefind search index
+  if (process.env.ELEVENTY_RUN_MODE === 'build') {
+    eleventyConfig.on('eleventy.after', events.buildPagefind);
   }
 
   // --------------------- Passthrough File Copy

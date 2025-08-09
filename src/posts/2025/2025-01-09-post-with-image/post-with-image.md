@@ -68,7 +68,7 @@ The most basic version contains the path to the image (absolute) and alt text (c
 ```jinja2
 {% image "path to image", "alt text" %}
 ```
-
+ 
 {% endraw %}
 
 It defaults to `loading = 'lazy'`, the picture element gets its set of images from `widths=[650,960,1400]` and compares to a condition of `sizes="auto"`.

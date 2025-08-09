@@ -1,4 +1,65 @@
 @font-face {
+  font-family: 'Abril';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src:
+    local(''),
+    url('/assets/fonts/abril/AbrilTitlingNar-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Abril';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src:
+    local(''),
+    url('/assets/fonts/abril/AbrilTitlingNar-SemiBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Literata';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local(''),
+    url('/assets/fonts/literata/LiterataTT-TextRegular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Literata';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    local(''),
+    url('/assets/fonts/literata/LiterataTT-TextItalic.woff2') format('woff2');
+}
+
+
+@font-face {
+  font-family: 'Portada';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src:
+    local(''),
+    url('/assets/fonts/portada/Portada-VF.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Portada';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src:
+    local(''),
+    url('/assets/fonts/portada/PortadaItalic-VF.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'Atkinson Hyperlegible';
   font-style: normal;
   font-display: swap;

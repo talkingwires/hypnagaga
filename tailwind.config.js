@@ -88,6 +88,20 @@ export default {
   },
 
   plugins: [
+    // Add optical sizing and prevent font-synthesis for font utilities
+    //plugin(function ({addComponents}) {
+    //  addComponents({
+    //    '.font-display': {
+    //      'font-optical-sizing': 'auto',
+    //      'font-synthesis': 'none'
+    //    },
+    //    '.font-base': {
+    //      'font-optical-sizing': 'auto',
+    //      'font-synthesis': 'none'
+    //    }
+    //  });
+    // }),
+
     // Generates custom property values from tailwind config
     plugin(function ({addComponents, config}) {
       let result = '';

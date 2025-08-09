@@ -8,8 +8,7 @@ schema: BlogPosting
     <h1 class="gradient-text">{{ title }}</h1>
 
     {% if image %}
-      <!-- image -->
-      {% image image, alt or "", credit, "eager", "feature" %}
+      {% featureImage image, alt or "", credit %}
     {% endif %}
 
     <p class="meta | cluster gutter-xs-s">
@@ -25,12 +24,13 @@ schema: BlogPosting
       %}
         <!-- tags -->
         {% for tag in tags %}{% if tag != "posts" %}
-          <a class="button" href="/tags/{{ tag | slugify }}/" data-small-button> {{ tag }} </a>
+          <a class="button" href="/tags/{{ tag | slugify }}/" data-pagefind-filter="tag:{{ tag }}" data-small-button> {{ tag }} </a>
         {% endif %}{% endfor %}
       {% endif %}
     </p>
-
+    <article data-pagefind-body>
     {{ content | safe }}
+    </article>
     {% include 'partials/edit-on.njk' %}
   </div>
 

@@ -1,6 +1,6 @@
 {
   "title": "Text Weights",
-  "description": "Helper classes and custom properties for common font weights",
+  "description": "Helper classes and custom properties for common font weights. Imported into tailwind.config.js, but for what purpose? Actually set in /src/assets/css/global/base/variables.css and changes based on light/dark theme.",
   "meta": {},
   "items": [
     {
@@ -8,11 +8,19 @@
       "value": 400
     },
     {
+      "name": "Medium",
+      "value": 500
+    },
+    {
+      "name": "Semibold",
+      "value": 600
+    },
+    {
       "name": "Bold",
       "value": 700
     },
     {
-      "name": "Extra Bold",
+      "name": "Black",
       "value": 900
     }
   ]

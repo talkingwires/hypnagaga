@@ -5,12 +5,12 @@
     {
       "name": "Display",
       "description": "Display font stack for headings and large text. Redhat Display is made for headlines and big statements, are low contrast and spaced tightly, with a large x-height and open counters.",
-      "value": ["Redhat", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+      "value": ["Abril", "Georgia", "sans-serif"]
     },
     {
       "name": "Base",
-      "description": "Base font stack for body text. Atkinson Hyperlegible, named after the founder of the Braille Institute, has been developed specifically to increase legibility for readers with low vision, and to improve comprehension.",
-      "value": ["Atkinson Hyperlegible", "system-ui", "sans-serif"]
+      "description": "Base font stack for body text. For is for everyone wishing for a modern serif that’s as clear and readable as a sans in restrictive digital environments, meet Portada by Veronika Burian and José Scaglione. Sans serifs are commonly used on small screens to save space and carry a modern tone. Serifs may appear fickle and unsteady, pixel grids change from one product to another, and space is at a premium. Portada now provides a serif option for these restrictive digital environments, putting that old trope to rest. The screen has met its serif match. https://www.type-together.com/portada-font",
+      "value": ["Portada", "Georgia", "system-ui", "sans-serif"]
     },
     {
       "name": "Mono",
@@ -18,7 +18,7 @@
       "value": [
         "ui-monospace",
         "Cascadia Code",
-        "Source Code Pro",
+        "Source Code Pro", 
         "Menlo",
         "Consolas",
         "DejaVu Sans Mono",

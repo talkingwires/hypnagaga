@@ -1,10 +1,26 @@
 {
   "title": "Colors",
-  "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and vibrant colors are converted to color palettes, fixed colors are kept as they are",
+  "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and vibrant colors are converted to color palettes, fixed colors are kept as they are. Run 'npm run colors' after defining base color values in src/_data/designTokens/colorsBase.json.",
   "shades_neutral": [
     {
       "name": "Gray",
       "value": "#888888"
+    },
+    {
+      "name": "Palatinate",
+      "value": "#671e67"
+    },
+    {
+      "name": "Midnight",
+      "value": "#340e4b"
+    },
+    {
+      "name": "Pale",
+      "value": "#edd0fc"
+    },
+    {
+      "name": "Slate",
+      "value": "#6D8196"
     }
   ],
   "shades_vibrant": [],
@@ -20,6 +36,26 @@
     {
       "name": "Gold",
       "value": "#fbbe25"
+    },
+    {
+      "name": "Purple",
+      "value": "#c056ff"
+    },
+    {
+      "name": "Fuschia",
+      "value": "#ff00ff"
+    },
+    {
+      "name": "Magenta",
+      "value": "#ff1dce"
+    },
+    {
+      "name": "Lime",
+      "value": "#CEFF1D"
+    },
+    {
+      "name": "Teal",
+      "value": "#1DCEFF"
     }
   ],
   "standalone": []

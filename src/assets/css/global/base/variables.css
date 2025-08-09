@@ -4,20 +4,20 @@
 :root {
   --gutter: var(--space-m-l);
   --transition-duration: 250ms;
-  --transition-timing: ease;
+  --transition-timing: ease; 
   --wrapper-width: 85rem;
-  --tracking: -0.04ch;
+  --tracking: -0.04ch; 
   --tracking-s: -0.075ch;
   --tracking-wide: 0.04ch;
   --stroke: 1px solid var(--color-bg-accent);
 
   --gradient-rainbow: linear-gradient(90deg, #cf4662 10%, #fbbe25 30%, #62c95c 50%, #08bccb 75%, #a977d5 90%);
   --gradient-conic: conic-gradient(
-    var(--color-primary) 0 28%,
+    var(--color-primary) 0 28%, 
     var(--color-secondary) 0 67%,
     var(--color-tertiary) 0 100%
   );
-  --gradient-stripes: linear-gradient(
+  --gradient-stripes: linear-gradient( 
     45deg,
     var(--color-gray-900) 0 75%,
     var(--color-primary) 0 85%,
@@ -28,47 +28,155 @@
   --color-light: var(--color-gray-100);
   --color-dark: var(--color-gray-900);
   --color-mid: var(--color-gray-400);
+  /* Set available font features */
+    --display-aalt: "aalt" off;
+    --display-case: "case" off;
+    --display-dlig: "dlig" off;
+    --display-frac: "frac" off;
+    --display: "hist" off;
+    --display: "ordn" off;
+    --display: "sups" off;
 }
+
+/* If class is applied, update custom property and
+   apply modern font-variant-* when supported */
+.display-aalt {
+    --display-aalt: "aalt" on;
+}
+
+.display-case {
+    --display-case: "case" on;
+}
+
+.display-dlig {
+    --display-dlig: "dlig" on;
+}
+
+@supports (font-variant-ligatures: discretionary-ligatures) {
+    .display-dlig {
+        --display-dlig: "____";
+        font-variant-ligatures: discretionary-ligatures;
+    }
+}
+
+.display-frac {
+    --display-frac: "frac" on;
+}
+
+@supports (font-variant-numeric: diagonal-fractions) {
+    .display-frac {
+        --display-frac: "____";
+        font-variant-numeric: diagonal-fractions;
+    }
+}
+
+.display-hist {
+    --display-hist: "hist" on;
+}
+
+@supports (font-variant-alternates: historical-forms) {
+    .display-hist {
+        --display-hist: "____";
+        font-variant-alternates: historical-forms;
+    }
+}
+
+.display-ordn {
+    --display-ordn: "ordn" on;
+}
+
+@supports (font-variant-numeric: ordinal) {
+    .display-ordn {
+        --display-ordn: "____";
+        font-variant-numeric: ordinal;
+    }
+}
+
+.display-sups {
+    --display-sups: "sups" on;
+}
+
+@supports (font-variant-position: super) {
+    .display-sups { 
+        --display-sups: "____";
+        font-variant-position: super;
+    } 
+}
+
+/* Apply current state of all custom properties
+   whenever a class is being applied */
+.display-aalt,
+.display-case,
+.display-dlig,
+.display-frac,
+.display-hist,
+.display-ordn, 
+.display-sups {
+    font-feature-settings: var(--display-aalt), var(--display-case), var(--display-dlig), var(--display-frac), var(--display-hist), var(--display-ordn), var(--display-sups);
+}
+
+
 
 /* Light theme */
 :root,
 :root[data-theme='light'] {
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-black: 900;
+
   --color-text: var(--color-gray-800);
-  --color-bg: var(--color-gray-100);
+  --color-bg: var(--color-slate-100);
 
-  --color-primary: var(--color-pink);
-  --color-secondary: var(--color-blue);
-  --color-tertiary: var(--color-gold);
+  --color-primary: var(--color-magenta);
+  --color-secondary: var(--color-lime);
+  --color-tertiary: var(--color-teal);
 
-  --color-text-accent: var(--color-gray-700);
-  --color-bg-accent: var(--color-gray-200);
-  --color-bg-accent-2: var(--color-gray-300);
+  --color-text-accent: var(--color-slate-700);
+  --color-bg-accent: var(--color-slate-200);
+  --color-bg-accent-2: var(--color-slate-300);
 }
 
 /* Dark theme */
-@media (prefers-color-scheme: dark) {
+@media (: dark) {
   :root {
-    --color-text: var(--color-gray-100);
-    --color-bg: var(--color-gray-800);
+    --font-light: 250;
+    --font-regular: 350;
+    --font-medium: 450;
+    --font-semibold: 550;
+    --font-bold: 650;
+    --font-black: 850;
 
-    --color-primary: var(--color-pink-subdued);
-    --color-secondary: var(--color-blue-subdued);
-    --color-tertiary: var(--color-gold-subdued);
+    --color-text: var(--color-gray-100);
+    --color-bg: var(--color-slate-800);
+
+    --color-primary: var(--color-magenta-subdued);
+    --color-secondary: var(--color-lime-subdued);
+    --color-tertiary: var(--color-teal-subdued);
 
     --color-text-accent: var(--color-gray-300);
-    --color-bg-accent: var(--color-gray-700);
-    --color-bg-accent-2: var(--color-gray-600);
+    --color-bg-accent: var(--color-slate-700);
+    --color-bg-accent-2: var(--color-slate-600);
   }
 }
 :root[data-theme='dark'] {
-  --color-text: var(--color-gray-100);
-  --color-bg: var(--color-gray-800);
+    --font-light: 250;
+    --font-regular: 350;
+    --font-medium: 450;
+    --font-semibold: 550;
+    --font-bold: 650;
+    --font-black: 850;
 
-  --color-primary: var(--color-pink-subdued);
-  --color-secondary: var(--color-blue-subdued);
-  --color-tertiary: var(--color-gold-subdued);
+  --color-text: var(--color-gray-100);
+  --color-bg: var(--color-slate-800);
+
+  --color-primary: var(--color-magenta-subdued);
+  --color-secondary: var(--color-lime-subdued);
+  --color-tertiary: var(--color-teal-subdued);
 
   --color-text-accent: var(--color-gray-300);
-  --color-bg-accent: var(--color-gray-700);
-  --color-bg-accent-2: var(--color-gray-600);
+  --color-bg-accent: var(--color-slate-700);
+  --color-bg-accent-2: var(--color-slate-600);
 }

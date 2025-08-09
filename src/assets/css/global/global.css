@@ -3,7 +3,7 @@
 @import 'base/reset.css' layer(reset);
 @import 'base/fonts.css' layer(fonts);
 
-@import 'tailwindcss/components' layer(tailwindComponents);
+@import 'tailwindcss/components' layer(tailwindComponents); 
 
 @import 'base/variables.css' layer(variables);
 @import 'base/global-styles.css' layer(global);
