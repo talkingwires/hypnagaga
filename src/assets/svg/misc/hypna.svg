@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <defs>
+    <style>
+      .spiral-line { fill: none; stroke-width: 6; stroke-linecap: butt; }
+    </style>
+  </defs>
+  <path class="spiral-line" stroke="#FF00FF"
+    d="M50,50
+       m0,-40
+       a40,40 0 1,1 -10,78
+       a30,30 0 1,0 8,-59
+       a20,20 0 1,1 -5,39
+       a10,10 0 1,0 3,-19" />
+  <path class="spiral-line" stroke="#8A2BE2"
+    d="M50,50
+       m0,-36
+       a36,36 0 1,1 -9,70
+       a26,26 0 1,0 7,-51
+       a16,16 0 1,1 -4,31
+       a6,6 0 1,0 2,-11" />
+</svg>
