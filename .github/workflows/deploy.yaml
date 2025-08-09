@@ -31,11 +31,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          config: |
-            Host *
-              StrictHostKeyChecking accept-new
-              BatchMode yes
 
       - name: Deploy to DigitalOcean
         run: |
-          rsync -e "ssh -o StrictHostKeyChecking=accept-new -o BatchMode=yes" -avz --delete ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/hypnagaga.com/html/
+          rsync -e "ssh -o StrictHostKeyChecking=yes -o BatchMode=yes" -avz --delete ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/hypnagaga.com/html/
