@@ -183,68 +183,156 @@
       "value": "#13161a"
     },
     {
-      "name": "Pink",
-      "value": "#dd4462"
+      "name": "Grade One",
+      "value": "#4800ff"
     },
     {
-      "name": "Pink Subdued",
-      "value": "#ce5769"
+      "name": "Grade One Subdued",
+      "value": "#4538df"
     },
     {
-      "name": "Blue",
-      "value": "#4467dd"
+      "name": "Grade Two",
+      "value": "#c700ff"
     },
     {
-      "name": "Blue Subdued",
-      "value": "#4d6cc8"
+      "name": "Grade Two Subdued",
+      "value": "#bb43e8"
     },
     {
-      "name": "Gold",
-      "value": "#fbbe25"
+      "name": "Grade Three",
+      "value": "#ff00b4"
     },
     {
-      "name": "Gold Subdued",
-      "value": "#f1c15b"
+      "name": "Grade Three Subdued",
+      "value": "#ed47ae"
     },
     {
-      "name": "Purple",
-      "value": "#c056ff"
+      "name": "Grade Four",
+      "value": "#ff0030"
     },
     {
-      "name": "Purple Subdued",
-      "value": "#b768ea"
+      "name": "Grade Four Subdued",
+      "value": "#eb4447"
     },
     {
-      "name": "Fuschia",
-      "value": "#ff00ff"
+      "name": "Grade Five",
+      "value": "#ff3300"
     },
     {
-      "name": "Fuschia Subdued",
-      "value": "#ee4eed"
+      "name": "Grade Five Subdued",
+      "value": "#ec5438"
+    },
+    {
+      "name": "Grade Six",
+      "value": "#0000bb"
+    },
+    {
+      "name": "Grade Six Subdued",
+      "value": "#0226a2"
+    },
+    {
+      "name": "Cyan",
+      "value": "#08fdf8"
+    },
+    {
+      "name": "Cyan Subdued",
+      "value": "#68f7f3"
+    },
+    {
+      "name": "Cyan Tinted",
+      "value": "#72ffff"
+    },
+    {
+      "name": "Cyan Tinted Subdued",
+      "value": "#92fafa"
+    },
+    {
+      "name": "Yellow",
+      "value": "#fdf808"
+    },
+    {
+      "name": "Yellow Subdued",
+      "value": "#faf767"
+    },
+    {
+      "name": "Yellow Tinted",
+      "value": "#ffff5a"
+    },
+    {
+      "name": "Yellow Tinted Subdued",
+      "value": "#fdfe85"
     },
     {
       "name": "Magenta",
-      "value": "#ff1dce"
+      "value": "#f808fd"
     },
     {
       "name": "Magenta Subdued",
-      "value": "#ee4fc4"
+      "value": "#e84dea"
+    },
+    {
+      "name": "Magenta Tinted",
+      "value": "#ff63ff"
+    },
+    {
+      "name": "Magenta Tinted Subdued",
+      "value": "#f179f0"
+    },
+    {
+      "name": "Pink",
+      "value": "#ff63ff"
+    },
+    {
+      "name": "Pink Subdued",
+      "value": "#f179f0"
+    },
+    {
+      "name": "Blue",
+      "value": "#49a7fe"
+    },
+    {
+      "name": "Blue Subdued",
+      "value": "#61a7ec"
+    },
+    {
+      "name": "Gold",
+      "value": "#fdf808"
+    },
+    {
+      "name": "Gold Subdued",
+      "value": "#faf767"
+    },
+    {
+      "name": "Purple",
+      "value": "#d100ff"
+    },
+    {
+      "name": "Purple Subdued",
+      "value": "#c445e9"
+    },
+    {
+      "name": "Fuschia",
+      "value": "#f808fd"
+    },
+    {
+      "name": "Fuschia Subdued",
+      "value": "#e84dea"
     },
     {
       "name": "Lime",
-      "value": "#CEFF1D"
+      "value": "#c0ff14"
     },
     {
       "name": "Lime Subdued",
-      "value": "#d3fc68"
+      "value": "#c7fb65"
     },
     {
       "name": "Teal",
-      "value": "#1DCEFF"
+      "value": "#08fdf8"
     },
     {
       "name": "Teal Subdued",
-      "value": "#5acbf2"
+      "value": "#68f7f3"
     }
   ]
 }

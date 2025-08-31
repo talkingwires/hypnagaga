@@ -23,39 +23,84 @@
       "value": "#6D8196"
     }
   ],
-  "shades_vibrant": [],
+  "shades_vibrant": [
+  ],
   "light_dark": [
     {
-      "name": "Pink",
-      "value": "#dd4462"
+      "name": "Grade One",
+      "value": "#4800ff"
     },
     {
-      "name": "Blue",
-      "value": "#4467dd"
+      "name": "Grade Two",
+      "value": "#c700ff"
     },
     {
-      "name": "Gold",
-      "value": "#fbbe25"
+      "name": "Grade Three",
+      "value": "#ff00b4"
     },
     {
-      "name": "Purple",
-      "value": "#c056ff"
+      "name": "Grade Four",
+      "value": "#ff0030"
     },
     {
-      "name": "Fuschia",
-      "value": "#ff00ff"
+      "name": "Grade Five",
+      "value": "#ff3300"
+    },
+    {
+      "name": "Grade Six",
+      "value": "#0000bb"
+    },
+    {
+      "name": "Cyan",
+      "value": "#08fdf8"
+    },
+    {
+      "name": "Cyan Tinted",
+      "value": "#72ffff"
+    },
+    {
+      "name": "Yellow",
+      "value": "#fdf808"
+    },
+    {
+      "name": "Yellow Tinted",
+      "value": "#ffff5a"
     },
     {
       "name": "Magenta",
-      "value": "#ff1dce"
+      "value": "#f808fd"
+    },
+    {
+      "name": "Magenta Tinted",
+      "value": "#ff63ff"
+    },
+    {
+      "name": "Pink",
+      "value": "#ff63ff"
+    },
+    {
+      "name": "Blue",
+      "value": "#49a7fe"
+    },
+    {
+      "name": "Gold",
+      "value": "#fdf808"
+    },
+    {
+      "name": "Purple",
+      "value": "#d100ff"
+    },
+    {
+      "name": "Fuschia",
+      "value": "#f808fd"
     },
     {
       "name": "Lime",
-      "value": "#CEFF1D"
+      "value": "#c0ff14"
     },
     {
       "name": "Teal",
-      "value": "#1DCEFF"
+      "value": "#08fdf8"
     }
   ],
   "standalone": []

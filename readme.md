@@ -1,3 +1,3 @@
 # Hypnagaga
 
-A person website based on [Eleventy Excellent](https://github.com/madrilene/eleventy-excellent).
+A personal website based on [Eleventy Excellent](https://github.com/madrilene/eleventy-excellent).

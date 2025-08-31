@@ -11,11 +11,12 @@
   --tracking-wide: 0.04ch;
   --stroke: 1px solid var(--color-bg-accent);
 
-  --gradient-rainbow: linear-gradient(90deg, #cf4662 10%, #fbbe25 30%, #62c95c 50%, #08bccb 75%, #a977d5 90%);
+  --gradient-rainbow: linear-gradient(90deg, var(--color-senary) 10%, var(--color-quaternary) 30%, var(--color-secondary) 50%, var(--color-primary) 75%, var(--color-senary) 90%);
+  
   --gradient-conic: conic-gradient(
     var(--color-primary) 0 28%, 
     var(--color-secondary) 0 67%,
-    var(--color-tertiary) 0 100%
+    var(--color-senary) 0 100%
   );
   --gradient-stripes: linear-gradient( 
     45deg,
@@ -130,13 +131,17 @@
   --color-text: var(--color-gray-800);
   --color-bg: var(--color-slate-100);
 
-  --color-primary: var(--color-magenta);
-  --color-secondary: var(--color-lime);
-  --color-tertiary: var(--color-teal);
 
-  --color-text-accent: var(--color-slate-700);
-  --color-bg-accent: var(--color-slate-200);
-  --color-bg-accent-2: var(--color-slate-300);
+    --color-primary: var(--color-grade-one);
+  --color-secondary: var(--color-grade-two);
+  --color-tertiary: var(--color-grade-four);
+  --color-quaternary: var(--color-grade-three);
+  --color-quinary: var(--color-grade-five);
+  --color-senary: var(--color-grade-six);
+
+  --color-text-accent: var(--color-grade-two);
+  --color-bg-accent: var(--color-grade-two);
+  --color-bg-accent-2: var(--color-grade-two);
 }
 
 /* Dark theme */
@@ -152,9 +157,12 @@
     --color-text: var(--color-gray-100);
     --color-bg: var(--color-slate-800);
 
-    --color-primary: var(--color-magenta-subdued);
-    --color-secondary: var(--color-lime-subdued);
-    --color-tertiary: var(--color-teal-subdued);
+  --color-primary: var(--color-grade-one-subdued);
+  --color-secondary: var(--color-grade-two-subdued);
+  --color-tertiary: var(--color-grade-four-subdued);
+  --color-quaternary: var(--color-grade-three-subdued);
+  --color-quinary: var(--color-grade-five-subdued);
+  --color-senary: var(--color-grade-six-subdued);
 
     --color-text-accent: var(--color-gray-300);
     --color-bg-accent: var(--color-slate-700);
@@ -172,9 +180,12 @@
   --color-text: var(--color-gray-100);
   --color-bg: var(--color-slate-800);
 
-  --color-primary: var(--color-magenta-subdued);
-  --color-secondary: var(--color-lime-subdued);
-  --color-tertiary: var(--color-teal-subdued);
+  --color-primary: var(--color-grade-one-subdued);
+  --color-secondary: var(--color-grade-two-subdued);
+  --color-tertiary: var(--color-grade-four-subdued);
+  --color-quaternary: var(--color-grade-three-subdued);
+  --color-quinary: var(--color-grade-five-subdued);
+  --color-senary: var(--color-grade-six-subdued);
 
   --color-text-accent: var(--color-gray-300);
   --color-bg-accent: var(--color-slate-700);
