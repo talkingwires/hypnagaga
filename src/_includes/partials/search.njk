@@ -1,25 +1,31 @@
-  {% css "local" %}
-    {% include "css/nav-main-drawer-cls.css" %}
-  {% endcss %}
+<div id="search" class="search"></div>
 
-  {% js "defer" %}
-    {% include "/_pagefind/pagefind-ui.js" %}
-  {% endjs %}
-
+<script src="/_pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });" defer></script>
 <style>
+  .search {
+    position: relative;
+    z-index: 11; /* Ensures the input is on top */
+  }
+  /* This is the class Pagefind UI uses for its results container */
+  .pagefind-ui__results-area {
+    position: absolute;
+    top: calc(100% + 0.5rem); /* Position it below the search input with a small gap */
+    right: 0;
+    z-index: 10;
+    background-color: var(--color-bg);
+    border: var(--stroke);
+    min-width: 35ch;
+    padding: var(--space-xs);
+  }
+
+  /* Pagefind UI theme overrides */
   @media (prefers-color-scheme: dark) {
     :root {
-      --pagefind-ui-primary: #eeeeee;
-      --pagefind-ui-text: #eeeeee;
-      --pagefind-ui-background: #152028;
-      --pagefind-ui-border: #152028;
-      --pagefind-ui-tag: #152028;
+      --pagefind-ui-primary: var(--color-light);
+      --pagefind-ui-text: var(--color-light);
+      --pagefind-ui-background: var(--color-dark);
+      --pagefind-ui-border: var(--color-dark);
+      --pagefind-ui-tag: var(--color-dark);
     }
   }
 </style>
-
-<div id="search" class="search"></div>
-
-<script src="/_pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false });"></script>
-  </div>
-</nav>

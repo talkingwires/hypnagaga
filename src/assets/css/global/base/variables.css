@@ -34,9 +34,9 @@
     --display-case: "case" off;
     --display-dlig: "dlig" off;
     --display-frac: "frac" off;
-    --display: "hist" off;
-    --display: "ordn" off;
-    --display: "sups" off;
+    --display-hist: "hist" off;
+    --display-ordn: "ordn" off;
+    --display-sups: "sups" off;
 }
 
 /* If class is applied, update custom property and
