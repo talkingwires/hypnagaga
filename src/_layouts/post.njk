@@ -17,7 +17,7 @@ schema: BlogPosting
         <span class="button" data-small-button data-button-variant="tertiary">draft</span>
       {%- endif %}
       <!-- date -->
-      {% set definedDate = date %} {% include "partials/date.njk" %}
+      <time data-pagefind-meta="date:{{ date | toIsoString }}" datetime="{{ date | toIsoString }}">{% set definedDate = date %} {% include "partials/date.njk" %}</time>
       {%
         if tags.length >
         1

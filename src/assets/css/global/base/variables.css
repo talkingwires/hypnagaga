@@ -145,7 +145,7 @@
 }
 
 /* Dark theme */
-@media (: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --font-light: 250;
     --font-regular: 350;

@@ -3,9 +3,19 @@
   z-index: 11; /* Ensures the input is on top */
 }
 /* This is the class Pagefind UI uses for its results and filters container .pagefind-ui__results-area does not display the border. We need to refactor all of this. */
+
+/* Explicitly set the search input colors to ensure they respect the theme,
+   overriding any lingering `prefers-color-scheme` styles. */
+.pagefind-ui__search-input {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-bg-accent);
+}
+
+/*
 .pagefind-ui__drawer {
   position: absolute;
-  top: calc(100% + 0.5rem); /* Position it below the search input with a small gap */
+  top: calc(100% + 0.5rem);
   right: 0;
   z-index: 10;
   background-color: var(--color-bg);
@@ -13,14 +23,19 @@
   min-width: 35ch;
   padding: var(--space-xs);
 }
+*/
 
 /* Pagefind UI theme overrides */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --pagefind-ui-primary: var(--color-light);
-    --pagefind-ui-text: var(--color-light);
-    --pagefind-ui-background: var(--color-dark);
-    --pagefind-ui-border: var(--color-dark);
-    --pagefind-ui-tag: var(--color-dark);
-  }
+:root {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: var(--color-primary);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-bg);
+  --pagefind-ui-border: var(--color-bg-accent);
+  --pagefind-ui-tag: var(--color-bg-accent-2);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: var(--border-radius-medium);
+  --pagefind-ui-image-border-radius: var(--border-radius-small);
+  --pagefind-ui-image-box-ratio: 3 / 2;
+  --pagefind-ui-font: var(--font-base);
 }
