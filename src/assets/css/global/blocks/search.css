@@ -1,41 +1,156 @@
-.search {
-  position: relative;
-  z-index: 11; /* Ensures the input is on top */
-}
-/* This is the class Pagefind UI uses for its results and filters container .pagefind-ui__results-area does not display the border. We need to refactor all of this. */
+/*=============================================
+=            Search Form            =
+=============================================*/
 
-/* Explicitly set the search input colors to ensure they respect the theme,
-   overriding any lingering `prefers-color-scheme` styles. */
-.pagefind-ui__search-input {
+.search-form {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.search-form__input {
+  flex-grow: 1;
+  padding: var(--space-xs) var(--space-s);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--rounded);
+  font-size: var(--text-base);
   background-color: var(--color-bg);
   color: var(--color-text);
-  border-color: var(--color-bg-accent);
 }
 
-/*
-.pagefind-ui__drawer {
+.search-form__input:focus {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.search-form__button {
+  padding: var(--space-xs) var(--space-s);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--rounded);
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  cursor: pointer;
+  font-size: var(--text-base);
+}
+
+.search-form__button:hover {
+  background-color: var(--color-secondary);
+}
+
+/*=============================================
+=            Search Results            =
+=============================================*/
+
+.search-results-summary {
+  margin-block-end: var(--space-l);
+  font-size: var(--text-l);
+  font-weight: 700;
+}
+
+.search-results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-l);
+}
+
+.search-result {
+  padding: var(--space-m);
+  border: 1px solid var(--color-primary-weak);
+  border-radius: var(--rounded-lg);
+  background-color: var(--color-bg-accent);
+}
+
+.search-result__title {
+  margin-block-start: 0;
+  margin-block-end: var(--space-xs);
+  font-size: var(--text-xl);
+}
+
+.search-result__title a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.search-result__title a:hover {
+  text-decoration: underline;
+}
+
+.search-result__excerpt {
+  margin: 0;
+}
+
+.search-result__excerpt mark {
+  background-color: var(--color-highlight);
+  color: var(--color-text);
+  padding: 0.1em 0.2em;
+  border-radius: var(--rounded-sm);
+}
+
+/*=============================================
+=            Search Filters            =
+=============================================*/
+
+#custom-search-filters {
+  margin-block-start: var(--space-l);
+  padding: var(--space-m);
+  border: 1px solid var(--color-primary-weak);
+  border-radius: var(--rounded-lg);
+  background-color: var(--color-bg-accent);
+}
+
+#custom-search-filters h3 {
+  margin-block-start: 0;
+  margin-block-end: var(--space-m);
+  font-size: var(--text-l);
+  font-weight: 700;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.filter-group label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-s);
+  border: 1px solid var(--color-primary-weak);
+  border-radius: var(--rounded);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.filter-group label:hover {
+  background-color: var(--color-primary-weak);
+}
+
+.filter-group input[type="checkbox"] {
+  /* Hide the default checkbox */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1em;
+  height: 1em;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--rounded-sm);
+  vertical-align: middle;
+  position: relative;
+}
+
+.filter-group input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+}
+
+.filter-group input[type="checkbox"]:checked::after {
+  content: '✔';
+  color: var(--color-bg);
   position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  z-index: 10;
-  background-color: var(--color-bg);
-  border: var(--stroke);
-  min-width: 35ch;
-  padding: var(--space-xs);
-}
-*/
-
-/* Pagefind UI theme overrides */
-:root {
-  --pagefind-ui-scale: 1;
-  --pagefind-ui-primary: var(--color-primary);
-  --pagefind-ui-text: var(--color-text);
-  --pagefind-ui-background: var(--color-bg);
-  --pagefind-ui-border: var(--color-bg-accent);
-  --pagefind-ui-tag: var(--color-bg-accent-2);
-  --pagefind-ui-border-width: 1px;
-  --pagefind-ui-border-radius: var(--border-radius-medium);
-  --pagefind-ui-image-border-radius: var(--border-radius-small);
-  --pagefind-ui-image-box-ratio: 3 / 2;
-  --pagefind-ui-font: var(--font-base);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8em;
+  line-height: 1;
 }

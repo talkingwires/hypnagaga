@@ -10,14 +10,31 @@ permalink: /search/
     <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
       <h1 class="text-center" style="color: var(--color-light);">{{ title }}</h1>
     </div>
-
     {% svg "divider/layeredwaves", null, "divider" %}
   </header>
 
-  <div class="region flow prose" style="--region-space-top: var(--space-xl-2xl)">
-    <p>A primitive search function.</p>
+  <div class="region flow" style="--region-space-top: var(--space-xl-2xl)">
+    {% include 'partials/search-form.njk' %}
   </div>
 
-     {% include 'partials/search-form.njk' %}
+  <div class="search-container region" style="--region-space-top: var(--space-l)">
+    
+    <div id="custom-search-filters" class="mb-m" data-pagefind-ignore></div>
 
+    <div id="search-results-wrapper" data-pagefind-ignore>
+      <h2 class="search-results-summary" id="search-summary" style="display: none;">
+        Found <span id="result-count">0</span> results for "<span id="search-term"></span>"
+      </h2>
+      <custom-masonry class="grid" data-rows="masonry">
+        <ul class="search-results-list" id="search-results"></ul>
+      </custom-masonry>
+      <nav id="pagination-container" role="navigation" class="fr-pagination mt-l" aria-label="Pagination"></nav>
+    </div>
+
+  </div>
 </div>
+
+<script>
+    const PAGEFIND_URL = "{{ "/pagefind/pagefind.js" | htmlBaseUrl }}";
+    {% include "scripts/search.js" %}
+</script>

@@ -1,0 +1,31 @@
+blockquote {
+  position: relative;
+  padding-left: calc(var(--space-sm) * 4); /* adjust based on max depth */
+}
+
+/* Draw a line for each depth */
+blockquote[data-depth="1"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background-color: var(--color-accent);
+}
+blockquote[data-depth="2"]::before {
+  left: var(--space-xs);
+  background-color: var(--color-secondary);
+}
+blockquote[data-depth="3"]::before {
+  left: calc(var(--space-xs) * 2);
+  background-color: var(--color-tertiary);
+}
+
+
+.quotedthread cite {
+  font-size: var(--size-step-min-1);
+  color: var(--color-text-accent);
+  font-family: var(--font-base);
+  font-style: normal;
+}
