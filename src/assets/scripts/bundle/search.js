@@ -116,16 +116,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let imageHTML = '';
             if (data.meta.image) {
-                imageHTML = `<img src="${data.meta.image}" alt="">`;
+                imageHTML = `<picture><img src="${data.meta.image}" alt=""></picture>`;
             }
 
             return `
                 <li>
-                    <custom-card clickable>
+                    <custom-card clickable img-square>
                         ${imageHTML}
                         <h3><a href="${data.url}">${data.meta.title}</a></h3>
                         <p>${data.excerpt}</p>
                         ${tagsHTML}
+                        <footer><a href="${data.url}">Read more</a></footer>
                     </custom-card>
                 </li>
             `;
@@ -189,5 +190,5 @@ document.addEventListener("DOMContentLoaded", () => {
         window.history.replaceState({}, "", url);
     }
 
-    initPagefind();
+    initPagefind(); 
 });
