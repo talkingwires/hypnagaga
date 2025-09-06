@@ -1,100 +1,41 @@
 @font-face {
-  font-family: 'Abril';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src:
-    local(''),
-    url('/assets/fonts/abril/AbrilTitlingNar-SemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Abril';
-  font-style: italic;
-  font-display: swap;
-  font-weight: 500;
-  src:
-    local(''),
-    url('/assets/fonts/abril/AbrilTitlingNar-SemiBoldItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Literata';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src:
-    local(''),
-    url('/assets/fonts/literata/LiterataTT-TextRegular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Literata';
-  font-style: italic;
-  font-display: swap;
-  font-weight: 400;
-  src:
-    local(''),
-    url('/assets/fonts/literata/LiterataTT-TextItalic.woff2') format('woff2');
-}
-
-
-@font-face {
-  font-family: 'Portada';
+  font-family: 'Fern';
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
   src:
     local(''),
-    url('/assets/fonts/portada/Portada-VF.woff2') format('woff2');
+    url('/assets/fonts/fern/FernVariable-Roman-VF.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Portada';
+  font-family: 'Fern';
   font-style: italic;
   font-display: swap;
   font-weight: 100 900;
   src:
     local(''),
-    url('/assets/fonts/portada/PortadaItalic-VF.woff2') format('woff2');
+    url('/assets/fonts/fern/FernVariable-Italic-VF.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
+  font-family: 'Fraunces';
   font-display: swap;
-  font-weight: 400;
+  font-weight: 100 900;
   src:
     local(''),
-    url('/assets/fonts/atkinson/atkinson-hyperlegible-regular.woff2') format('woff2');
+    url('/assets/fonts/fraunces/Fraunces--latin_basic.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
 @font-face {
-  font-family: 'Atkinson Hyperlegible';
+  font-family: 'Fraunces';
+  font-display: swap;
+  font-weight: 100 900;
   font-style: italic;
-  font-display: swap;
-  font-weight: 400;
   src:
     local(''),
-    url('/assets/fonts/atkinson/atkinson-hyperlegible-italic.woff2') format('woff2');
+    url('/assets/fonts/fraunces/Fraunces-Italic--latin_basic.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src:
-    local(''),
-    url('/assets/fonts/atkinson/atkinson-hyperlegible-bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Redhat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 900;
-  src:
-    local(''),
-    url('/assets/fonts/redhat/red-hat-display-v7-latin-900.woff2') format('woff2');
-}

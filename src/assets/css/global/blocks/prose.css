@@ -5,6 +5,16 @@
   --wrapper-width: 64rem;
 }
 
+.prose em {
+  font-size: 1em !important; /* Force em tags to be the same size as parent */
+  font-style: italic !important; /* Force em tags to be italic */
+}
+
+.prose em {
+  font-size: 1em; /* Setting this because something is causing ems to appear larger, and I do not know what that may be. */
+  font-style: italic;
+}
+
 .prose :is(pre, pre + *, figure, picture) {
   --flow-space: var(--space-m-l);
 }

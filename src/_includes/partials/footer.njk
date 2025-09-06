@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="cluster gutter-xs">
       <nav class="cluster text-step-0" aria-label="{{ meta.navigation.ariaBottom }}">
-        &copy; {% year %}
+        <span class="font-display">&copy; {% year %}</span>
         <a
           href="{{ repoUrl }}/commit/{{ gitCommit.fullHash }}"
           title="Commit: {{ gitCommit.message }} ({{ gitCommit.time }})"
