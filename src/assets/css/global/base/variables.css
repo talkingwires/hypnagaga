@@ -142,6 +142,7 @@
   --color-text-accent: var(--color-grade-two);
   --color-bg-accent: var(--color-grade-two);
   --color-bg-accent-2: var(--color-grade-two);
+  --color-highlight: var(--color-quaternary);
 }
 
 /* Dark theme */
@@ -167,6 +168,7 @@
     --color-text-accent: var(--color-gray-300);
     --color-bg-accent: var(--color-slate-700);
     --color-bg-accent-2: var(--color-slate-600);
+    --color-highlight: var(--color-quaternary);
   }
 }
 :root[data-theme='dark'] {
@@ -190,4 +192,5 @@
   --color-text-accent: var(--color-gray-300);
   --color-bg-accent: var(--color-slate-700);
   --color-bg-accent-2: var(--color-slate-600);
+  --color-highlight: var(--color-quaternary);
 }

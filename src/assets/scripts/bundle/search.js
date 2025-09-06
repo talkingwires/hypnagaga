@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pagefind) return;
         try {
             pagefind = await import(PAGEFIND_URL);
-            pagefind.options({ "excerptLength": 15 });
+            pagefind.options({ "excerptLength": 30 });
             await displayFilters();
             
             const searchParams = new URLSearchParams(window.location.search);
@@ -103,6 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const items = await Promise.all(searchResult.results.map(async (result) => {
             const data = await result.data();
             
+            // Debug: log available data fields
+            console.log('Pagefind data:', data);
+            
             let tagsHTML = '';
             if (data.filters && data.filters.tag && data.filters.tag.length > 0) {
                 tagsHTML = `
@@ -116,7 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let imageHTML = '';
             if (data.meta.image) {
-                imageHTML = `<picture><img src="${data.meta.image}" alt=""></picture>`;
+                // Try to get alt text from Pagefind metadata, fallback to title, then generic text
+                const altText = data.meta['image[alt]'] || data.meta.title || 'Search result image';
+                imageHTML = `<picture><img src="${data.meta.image}" alt="${altText}"></picture>`;
             }
 
             return `
