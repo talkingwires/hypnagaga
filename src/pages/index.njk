@@ -23,21 +23,35 @@ blog:
 
   <section class="hero full | region">
     {% image '/assets/images/design/visit.png', 'A hero image', '', 'eager', 'hero__image-container', '', [650, 960, 1400, 1920], '100vw' %}
-    <div class="wrapper flow prose hero__text">
-      <h2 id="an-eleventy-starter">Hello, World</h2>
-      <p><b>hyp•na•gog•ic</b> \;hipna;gajik\ <i>adj</i> [<i>hypnagogic</i> fr. F <i>hypnagogique</i>, fr. <i>hypn</i>- + -<i>agogique</i> (fr. Gk
+    <div class="flow prose hero__text" >
+      
+      <h3 class="heading-line" style="color: var(--color-light);">hyp•na•gog•ic</h3><p class="text-step-min-2"> \;hipna;gajik\ <i>adj</i> [<i>hypnagogic</i> fr. F <i>hypnagogique</i>, fr. <i>hypn</i>- + -<i>agogique</i> (fr. Gk
 -<i>agōgikos</i> as in <i>paidagōgikos</i> pedagogic)]: of, relating to, or associated with the drowsiness
 preceding sleep</p>
-      <p><b>ga•ga</b> \'gä|,gä, 'gå|,gå, |_ga\ <i>adj</i> [F, fr. <i>gaga</i>, n., fool, dodderer, of imit. origin] <b>1</b> <b>a</b> : mentally foolish <b>b</b> : characterized by a marked and interesting or foolish variation from a conventional or expected pattern <b>:</b> marked by interesting or foolish incongruities or surprises</p>
-      <p><b>2</b> <b>:</b> markedly or wildly and often foolishly enthusiastic (as from love or infatuation)</p>
+
+      <h3 class="heading-line">ga•ga</h3><p class="text-step-min-2"> \'gä|,gä, 'gå|,gå, |_ga\ <i>adj</i> [F, fr. <i>gaga</i>, n., fool, dodderer, of imit. origin] <b>1</b> <b>a</b> : mentally foolish <b>b</b> : characterized by a marked and interesting or foolish variation from a conventional or expected pattern <b>:</b> marked by interesting or foolish incongruities or surprises</p>
+      <p class="text-step-min-2"><b>2</b> <b>:</b> markedly or wildly and often foolishly enthusiastic (as from love or infatuation)</p>
+      
     </div>
   </section>
 
+
+  <header class="full | section" style="--spot-color: var(--color-magenta-subdued)">
+    <div class="section__inner flow region" style="--region-space-top: var(--space-l)">
+      <div class="wrapper prose">
+        <h1 class="text-center" style="color: var(--color-light);">{{ title }}</h1>
+      </div>
+    </div>
+
+    {% svg "divider/spikes", null, "divider" %}
+  </header>
+
   <section class="full | region">
     <div class="wrapper flow prose">
-      <h2>{{ blog.title }}</h2>
+      <!-- <h2>{{ blog.title }}</h2> -->
       {% if blog.intro %}
-        <p>{{ blog.intro }}</p>
+        <!--  <p>          {{ blog.intro }}</p> -->
+        <p>Quisque sagittis convallis tincidunt. Vestibulum ut sodales urna, in luctus justo. Mauris tempus velit lectus, eu suscipit quam venenatis non. Duis pretium eget lectus nec commodo. Duis eros urna, finibus sit amet ante at, ullamcorper pellentesque leo. Nunc accumsan posuere eros eu pretium. Proin sit amet aliquam dolor, et pretium nisi. Etiam lobortis purus venenatis nunc commodo, ac consequat sapien maximus. Maecenas fringilla vitae nisi sed imperdiet. Suspendisse nulla urna, imperdiet eget lobortis eu, dictum a sapien. Mauris non gravida dolor, in fringilla velit. Phasellus interdum risus nisi, vel consectetur lacus posuere sed. Proin vel enim sed risus egestas consequat sit amet eget massa.</p> <p>Quisque nulla ipsum, scelerisque eu blandit et, molestie sit amet odio. Fusce vitae velit nibh. Duis consequat, ligula sit amet maximus placerat, lectus tellus tempor est, vitae posuere sapien dui nec augue. Ut porta lacus turpis, a condimentum dolor pellentesque nec. Phasellus mattis tempus magna nec pharetra. Praesent ultricies enim in mattis pretium. Nunc vel dolor et mi lacinia ullamcorper. Vestibulum sollicitudin lacinia lacus.</p>
       {% endif %}
       <div class="feature |  region region-space-l">
         <custom-masonry layout="50-50">
