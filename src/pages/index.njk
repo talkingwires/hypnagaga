@@ -17,14 +17,21 @@ blog:
     {% svg "divider/waves", null, "divider" %}
   </header>
 -->
-  <article class="full | region">
-    <div class="wrapper flow prose">
+  {% css "local" %}
+  {% include "css/page-hero.css" %}
+{% endcss %}
+
+  <section class="hero full | region">
+    {% image '/assets/images/design/visit.png', 'A hero image', '', 'eager', 'hero__image-container', '', [650, 960, 1400, 1920], '100vw' %}
+    <div class="wrapper flow prose hero__text">
       <h2 id="an-eleventy-starter">Hello, World</h2>
-      <p>
-        Morbi eu pretium diam. Integer feugiat elit quis arcu sagittis eleifend. Donec consectetur enim a orci finibus, vel scelerisque ipsum maximus. Vestibulum tempus diam et dui sagittis, a venenatis leo commodo. Vivamus vitae ligula imperdiet, consequat tellus vel, interdum magna. Nulla accumsan nisl vitae ligula laoreet porttitor. Etiam varius purus eu orci gravida ornare. Vestibulum tristique augue odio, quis pretium sem viverra eu. Nam id mattis nisl. Nullam lobortis dignissim consectetur.
-      </p>
+      <p><b>hyp•na•gog•ic</b> \;hipna;gajik\ <i>adj</i> [<i>hypnagogic</i> fr. F <i>hypnagogique</i>, fr. <i>hypn</i>- + -<i>agogique</i> (fr. Gk
+-<i>agōgikos</i> as in <i>paidagōgikos</i> pedagogic)]: of, relating to, or associated with the drowsiness
+preceding sleep</p>
+      <p><b>ga•ga</b> \'gä|,gä, 'gå|,gå, |_ga\ <i>adj</i> [F, fr. <i>gaga</i>, n., fool, dodderer, of imit. origin] <b>1</b> <b>a</b> : mentally foolish <b>b</b> : characterized by a marked and interesting or foolish variation from a conventional or expected pattern <b>:</b> marked by interesting or foolish incongruities or surprises</p>
+      <p><b>2</b> <b>:</b> markedly or wildly and often foolishly enthusiastic (as from love or infatuation)</p>
     </div>
-  </article>
+  </section>
 
   <section class="full | region">
     <div class="wrapper flow prose">

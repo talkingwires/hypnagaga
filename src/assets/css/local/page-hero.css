@@ -1,0 +1,85 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #f8f8f8; /* Gray 100 */
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: 10vh; /* Pushes content below header */
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* Adjust as needed */
+  background: linear-gradient(to top, var(--color-bg), transparent);
+}
+
+.hero__text {
+  text-align: left;
+  background-color: rgb(from var(--color-primary) r g b / 0.75);
+  padding: var(--space-m);
+  border-radius: var(--border-radius-medium);
+  z-index: 1; /* Ensure text is above the gradient */
+}
+
+.hero__image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero__image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80% 25%; /* Focus on the right/top of the image */
+}
+
+/* Add a bit of a shadow to the text to make it more readable */
+.hero .hero__text * {
+  text-shadow: 0 2px 4px var(--color-bg);
+}
+
+@media (max-width: 639px) {
+  .hero {
+    display: block;
+    padding-top: 0;
+    min-height: unset;
+  }
+
+  .hero::after {
+    display: none; /* Hide the gradient on mobile */
+  }
+
+  .hero__image-container {
+    position: static;
+    z-index: auto;
+    height: 50vh;
+  }
+
+  .hero__image-container img {
+    object-fit: cover;
+    object-position: 70% center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__text {
+    text-align: left;
+    background-color: transparent;
+    color: var(--color-text);
+    padding: var(--space-l) 0;
+  }
+
+  .hero .hero__text * {
+    text-shadow: none;
+  }
+}
