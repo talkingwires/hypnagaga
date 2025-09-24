@@ -1,38 +1,38 @@
 ---
-layout: base
 title: Search
-description: 'Sift through the posts.'
-permalink: /search/
+permalink: /search/index.html
+description: 'Sift through this rubble.'
+layout: page
 ---
 
-<div class="wrapper">
-  <header class="full | section" style="--spot-color: var(--color-secondary)">
-    <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
-      <h1 class="text-center" style="color: var(--color-light);">{{ title }}</h1>
+<search>
+  <form role="search" action="https://duckduckgo.com" method="GET" id="search">
+    <fieldset>
+      <label for="q" class="hidden">Search</label>
+      <input id="q" type="search" name="q" placeholder="Search" autofocus>
+      <input type="hidden" name="sites" value="{{meta.domain}}">
+      <input type="submit" value="Search" class="hidden">
+    </fieldset>
+
+    <div class="filter-and-results filter-and-results--hidden" id="filter-and-results">
+      <fieldset class="types">
+        <label><input type="checkbox" name="Page">Page</label>
+        <label><input type="checkbox" name="Post">Post</label>
+      </fieldset>
+      <div class="results-area">
+        <header id="results-count"></header>
+        <div class="results" id="results"></div>
+      </div>
     </div>
-    {% svg "divider/layeredwaves", null, "divider" %}
-  </header>
+  </form>
+</search>
 
-  <div class="region flow" style="--region-space-top: var(--space-xl-2xl)">
-    {% include 'partials/search-form.njk' %}
-  </div>
 
-  <div class="search-container region" style="--region-space-top: var(--space-l)">
-    
-    <div id="custom-search-filters" class="mb-m" data-pagefind-ignore></div>
-
-    <div id="search-results-wrapper" data-pagefind-ignore>
-      <h2 class="search-results-summary" id="search-summary" style="display: none;">
-        Found <span id="result-count">0</span> results for "<span id="search-term"></span>"
-      </h2>
-      <ul class="search-results-list grid" id="search-results" data-layout="thirds"></ul>
-      <nav id="pagination-container" role="navigation" class="fr-pagination mt-l" aria-label="Pagination"></nav>
-    </div>
-
-  </div>
-</div>
-
-<script>
-    const PAGEFIND_URL = "{{ "/pagefind/pagefind.js" | htmlBaseUrl }}";
-    {% include "scripts/search.js" %}
-</script>
+{% css "local" %}
+  {% include "css/forms.css" %}
+  {% include "css/search.css" %} 
+  {% include "css/custom-card.css" %}
+{% endcss %}
+{% js "defer" %}
+  {% include "scripts/search.js" %}
+{% endjs %} 

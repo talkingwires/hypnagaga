@@ -1,199 +1,178 @@
-document.addEventListener("DOMContentLoaded", () => {
-    let pagefind;
-    let selectedFilters = {};
+const allTypes = ['Page', 'Post'];
 
-    const searchInput = document.getElementById("search-input");
-    const searchForm = document.getElementById("search-form");
-    const resultsContainer = document.getElementById("search-results");
-    const summaryContainer = document.getElementById("search-summary");
-    const countContainer = document.getElementById("result-count");
-    const termContainer = document.getElementById("search-term");
-    const filterContainer = document.getElementById("custom-search-filters");
-
-    if (typeof PAGEFIND_URL === 'undefined') {
-        console.error('PAGEFIND_URL is not defined. Please set it in your template.');
-        return;
-    }
-
-    const initPagefind = async () => {
-        if (pagefind) return;
-        try {
-            pagefind = await import(PAGEFIND_URL);
-            pagefind.options({ "excerptLength": 30 });
-            await displayFilters();
-            
-            const searchParams = new URLSearchParams(window.location.search);
-            const searchTerm = searchParams.get("term");
-            const tags = searchParams.get("tags");
-
-            if (tags) {
-                const tagArray = tags.split(',');
-                selectedFilters.tag = tagArray;
-                tagArray.forEach(tag => {
-                    const checkbox = document.querySelector(`input[type="checkbox"][value="${tag}"]`);
-                    if (checkbox) checkbox.checked = true;
-                });
-            }
-
-            if (searchTerm) {
-                searchInput.value = searchTerm;
-                await performSearch(searchTerm, selectedFilters);
-            } else if (tags) {
-                await performSearch(null, selectedFilters);
-            }
-
-        } catch (e) {
-            console.error("Pagefind failed to load or initialize:", e);
-        }
-    };
-
-    const displayFilters = async () => {
-        const availableFilters = await pagefind.filters();
-        if (availableFilters.tag) {
-            const tags = Object.keys(availableFilters.tag);
-            const filterTitle = document.createElement('h3');
-            filterTitle.textContent = 'Filter by Tag';
-            filterContainer.appendChild(filterTitle);
-
-            const tagGroup = document.createElement('div');
-            tagGroup.className = 'filter-group';
-
-            tags.forEach(tag => {
-                const label = document.createElement('label');
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.value = tag;
-                checkbox.name = 'tag';
-                label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(` ${tag}`));
-                tagGroup.appendChild(label);
-            });
-            filterContainer.appendChild(tagGroup);
-        }
-    };
-
-    const getSelectedFilters = () => {
-        const selected = {};
-        const checkedBoxes = filterContainer.querySelectorAll('input[type="checkbox"]:checked');
-        if (checkedBoxes.length > 0) {
-            selected.tag = Array.from(checkedBoxes).map(cb => cb.value);
-        }
-        return selected;
-    };
-
-    const performSearch = async (term, filters = {}) => {
-        if (!pagefind) return;
-        if (!term && Object.keys(filters).length === 0) {
-            clearResults();
-            return;
+async function ensurePagefind() {
+  if (window.pagefind) return Promise.resolve(window.pagefind);
+  return import('/pagefind/pagefind.js')
+    .then(function (mod) {
+      mod.options({
+        highlightParam: 'highlight'
+      });
+      window.pagefind = mod;
+      return window.pagefind || mod.pagefind || mod.default || mod;
+    })
+    .catch(function () {
+      return new Promise(function (resolve) {
+        const s = document.createElement('script');
+        s.src = '/pagefind/pagefind.js';
+        s.type = 'module';
+        s.onload = function () {
+          resolve(window.pagefind);
         };
-
-        summaryContainer.style.display = 'block';
-        termContainer.innerText = term || 'all posts';
-
-        const searchResult = await pagefind.search(term, { filters });
-        
-        countContainer.innerText = searchResult.results.length;
-
-        if (searchResult.results.length === 0) {
-            resultsContainer.innerHTML = "<li>No results found.</li>";
-            return;
-        }
-
-        const items = await Promise.all(searchResult.results.map(async (result) => {
-            const data = await result.data();
-            
-            // Debug: log available data fields
-            console.log('Pagefind data:', data);
-            
-            let tagsHTML = '';
-            if (data.filters && data.filters.tag && data.filters.tag.length > 0) {
-                tagsHTML = `
-                    <div class="meta">
-                        <ul class="cluster">
-                            ${data.filters.tag.map(tag => `<li class="button" data-small-button>${tag}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-            }
-
-            let imageHTML = '';
-            if (data.meta.image) {
-                // Try to get alt text from Pagefind metadata, fallback to title, then generic text
-                const altText = data.meta['image[alt]'] || data.meta.title || 'Search result image';
-                imageHTML = `<picture><img src="${data.meta.image}" alt="${altText}"></picture>`;
-            }
-
-            return `
-                <li>
-                    <custom-card clickable img-square>
-                        ${imageHTML}
-                        <h3><a href="${data.url}">${data.meta.title}</a></h3>
-                        <p>${data.excerpt}</p>
-                        ${tagsHTML}
-                        <footer><a href="${data.url}">Read more</a></footer>
-                    </custom-card>
-                </li>
-            `;
-        }));
-
-        resultsContainer.innerHTML = items.join("");
-    };
-    
-    const clearResults = () => {
-        resultsContainer.innerHTML = "";
-        summaryContainer.style.display = 'none';
-        countContainer.innerText = "0";
-        termContainer.innerText = "";
-    }
-
-    const debounce = (func, delay) => {
-        let timeout;
-        return function(...args) {
-            const context = this;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(context, args), delay);
+        s.onerror = function () {
+          resolve(undefined);
         };
-    };
+        document.head.appendChild(s);
+      });
+    });
+}
 
-    const handleSearch = async () => {
-        const searchTerm = searchInput.value.trim();
-        selectedFilters = getSelectedFilters();
-        updateURL(searchTerm, selectedFilters);
-        await performSearch(searchTerm, selectedFilters);
-    };
+function renderItem(item) {
+  let {
+    url,
+    excerpt,
+    meta: {author, date, title, type}
+  } = item;
 
-    if (searchInput) {
-        searchInput.addEventListener("input", debounce(handleSearch, 300));
+  const dateText = date ? `<span slot="date">${date}</span>` : '';
+
+  let variant;
+  switch (type) {
+    case 'Page':
+      variant = 'secondary';
+      break;
+    default:
+      variant = 'primary';
+      break;
+  }
+
+  return `
+<custom-card clickable class="mt-s-m">
+  <h2 slot="headline" class="text-step-2">
+    <a href="${url}">${title}</a>
+  </h2>
+  ${dateText}
+  <div slot="type" webc:nokeep>
+    <span class="button" data-small-button data-button-variant=${variant}>${type}</span>
+  </div>
+  <div slot="content" webc:nokeep>${excerpt}</div>
+</custom-card>
+`;
+}
+
+function renderItems(q, items) {
+  var results = items.length == 1 ? 'result' : 'results';
+  document.querySelector('#results-count').innerHTML = `${items.length} ${results} for ${q}`;
+
+  let content = items.map(renderItem).join('');
+  document.querySelector('#results').innerHTML = content;
+}
+
+function doSearch(isPopEvent = false) {
+  let form = document.querySelector('form#search');
+
+  // Clear current content
+  document.querySelector('#results').innerHTML = '';
+  document.querySelector('#results-count').innerHTML = '';
+
+  // Get form data
+  let formData = new FormData(form);
+  let q = formData.get('q');
+
+  let types = [];
+  allTypes.map(possibleFilter => {
+    if (formData.get(possibleFilter)) {
+      types.push(possibleFilter);
+    }
+  });
+
+  // Only do a search if there's a query
+  if (q) {
+    // Update url unless it's a popstate event
+    if (!isPopEvent) {
+      setWindowLocation(q, types, isPopEvent);
     }
 
-    if (searchForm) {
-        searchForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            handleSearch();
-        });
-    }
+    // Show results area
+    form.querySelector('#filter-and-results').classList.remove('filter-and-results--hidden');
 
-    if (filterContainer) {
-        filterContainer.addEventListener('change', handleSearch);
-    }
-    
-    const updateURL = (term, filters) => {
-        const url = new URL(window.location);
-        if (term) {
-            url.searchParams.set("term", term);
-        } else {
-            url.searchParams.delete("term");
-        }
+    // Find and display results
+    window.pagefind
+      .search(q, {filters: {type: {any: types}}})
+      .then(search =>
+        Promise.all(search.results.map(result => result.data()))
+          .then(data => renderItems(q, data))
+          .catch(console.error)
+      )
+      .catch(console.error);
+  }
+}
 
-        if (filters.tag && filters.tag.length > 0) {
-            url.searchParams.set("tags", filters.tag.join(','));
-        } else {
-            url.searchParams.delete("tags");
-        }
-        
-        window.history.replaceState({}, "", url);
-    }
+function setWindowLocation(q, types) {
+  const url = new URL(window.location);
+  if (q) {
+    url.searchParams.set('q', q);
+  }
 
-    initPagefind(); 
+  url.searchParams.delete('types');
+  for (const type of types) {
+    url.searchParams.append('types', type);
+  }
+
+  window.history.pushState({search: url.searchParams.toString()}, '', url);
+}
+
+function setFormFromLocation() {
+  const url = new URL(window.location);
+  let searchParams = url.searchParams;
+  setFormFromSearchParams(searchParams);
+}
+
+function setFormFromSearchParams(searchParams) {
+  let q = searchParams.get('q');
+  document.querySelector('form#search input#q').value = q;
+
+  let types = searchParams.getAll('types');
+
+  for (const type of allTypes) {
+    document.querySelector(`form#search input[name="${type}"]`).checked = types.includes(type);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', _ => {
+  ensurePagefind()
+    .then(_ => {
+      setFormFromLocation();
+      doSearch();
+    })
+    .catch(e => console.error('page find error', e));
+
+  let form = document.querySelector('form#search');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    doSearch();
+  });
+
+  // Submit form on post type change
+  let checkboxes = form.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', _ => {
+      doSearch();
+    });
+  });
+
+  // Using browser back or forward button
+  window.addEventListener('popstate', event => {
+    // Only intercept if on search page
+    if (!['/search/', '/search'].includes(window.location.pathname)) return;
+
+    ensurePagefind()
+      .then(_ => {
+        let searchParams = new URLSearchParams(event.state?.search ?? '');
+        setFormFromSearchParams(searchParams);
+        // Don't update history as we're navigating through history!
+        doSearch(true);
+      })
+      .catch(e => console.error('page find error', e));
+  });
 });
