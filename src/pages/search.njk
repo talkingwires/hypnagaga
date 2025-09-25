@@ -6,7 +6,7 @@ layout: page
 ---
 
 <search>
-  <form role="search" action="https://duckduckgo.com" method="GET" id="search">
+  <form role="search" method="GET" id="search">
     <fieldset>
       <label for="q" class="hidden">Search</label>
       <input id="q" type="search" name="q" placeholder="Search" autofocus>
@@ -19,6 +19,12 @@ layout: page
         <label><input type="checkbox" name="Page">Page</label>
         <label><input type="checkbox" name="Post">Post</label>
       </fieldset>
+      <fieldset class="tags">
+        {% for tag in collections.tagList %}
+          <label><input type="checkbox" name="tag" value="{{ tag }}">{{ tag }}</label>
+        {% endfor %}
+      </fieldset>
+      <script id="all-tags" type="application/json">{{ collections.tagList | dump | safe }}</script>
       <div class="results-area">
         <header id="results-count"></header>
         <div class="results" id="results"></div>

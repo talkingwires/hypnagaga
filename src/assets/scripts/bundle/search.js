@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 const allTypes = ['Page', 'Post'];
 
 async function ensurePagefind() {
@@ -30,11 +32,33 @@ function renderItem(item) {
   let {
     url,
     excerpt,
-    meta: {author, date, title, type}
+    meta: {author, date, title, type, image, image_alt, tag}
   } = item;
 
-  const dateText = date ? `<span slot="date">${date}</span>` : '';
+  //debugging
+  console.log(item.meta);
 
+  // create date
+  const dateHTML = date ? `<span slot="date">${dayjs(date).format('MMMM D, YYYY') }</span>` : '';
+
+  // create hero image preview
+  let imageHTML = '';
+            if (item.meta.image) {
+              // Try to get alt text from Pagefind metadata, fallback to title, then generic text
+              const altText = item.meta['image[alt]'] || item.meta.title || 'Search result image';
+              imageHTML = `<picture><img src="${item.meta.image}" alt="${altText}"></picture>`;
+            }
+
+// create tags
+            let tagsHTML = '';
+            if (item.filters && item.filters.tag && item.filters.tag.length > 0) {
+                tagsHTML = `
+                    
+                            ${item.filters.tag.map(tag => `<span class="button" data-small-button>${tag}</span>`).join('')}
+                    
+                `;
+            }
+            
   let variant;
   switch (type) {
     case 'Page':
@@ -45,14 +69,16 @@ function renderItem(item) {
       break;
   }
 
+  //output the search result
   return `
 <custom-card clickable class="mt-s-m">
+  ${imageHTML}
   <h2 slot="headline" class="text-step-2">
     <a href="${url}">${title}</a>
   </h2>
-  ${dateText}
-  <div slot="type" webc:nokeep>
-    <span class="button" data-small-button data-button-variant=${variant}>${type}</span>
+  ${dateHTML}
+  <div slot="type" class="meta | cluster gutter-xs-s" webc:nokeep>
+    <span class="button" data-small-button data-button-variant=${variant}>${type}</span> ${tagsHTML}
   </div>
   <div slot="content" webc:nokeep>${excerpt}</div>
 </custom-card>
@@ -85,11 +111,16 @@ function doSearch(isPopEvent = false) {
     }
   });
 
+  let tags = [];
+  formData.getAll('tag').forEach(tag => {
+    if (tag) tags.push(tag);
+  });
+
   // Only do a search if there's a query
   if (q) {
     // Update url unless it's a popstate event
     if (!isPopEvent) {
-      setWindowLocation(q, types, isPopEvent);
+      setWindowLocation(q, types, tags, isPopEvent);
     }
 
     // Show results area
@@ -97,7 +128,13 @@ function doSearch(isPopEvent = false) {
 
     // Find and display results
     window.pagefind
-      .search(q, {filters: {type: {any: types}}})
+      .search(q, {
+        filters: {
+          type: { any: types },
+          tag: { any: tags }
+      }
+    })
+
       .then(search =>
         Promise.all(search.results.map(result => result.data()))
           .then(data => renderItems(q, data))
@@ -107,7 +144,7 @@ function doSearch(isPopEvent = false) {
   }
 }
 
-function setWindowLocation(q, types) {
+function setWindowLocation(q, types, tags) {
   const url = new URL(window.location);
   if (q) {
     url.searchParams.set('q', q);
@@ -117,6 +154,12 @@ function setWindowLocation(q, types) {
   for (const type of types) {
     url.searchParams.append('types', type);
   }
+
+  url.searchParams.delete('tags');
+  for (const tag of tags) {
+    url.searchParams.append('tags', tag);
+  }
+
 
   window.history.pushState({search: url.searchParams.toString()}, '', url);
 }
@@ -136,6 +179,11 @@ function setFormFromSearchParams(searchParams) {
   for (const type of allTypes) {
     document.querySelector(`form#search input[name="${type}"]`).checked = types.includes(type);
   }
+
+  let tags = searchParams.getAll('tags');
+  document.querySelectorAll('form#search input[name="tag"]').forEach(input => {
+    input.checked = tags.includes(input.value);
+  });
 }
 
 window.addEventListener('DOMContentLoaded', _ => {
