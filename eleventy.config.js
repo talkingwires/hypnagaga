@@ -101,6 +101,15 @@ export default async function (eleventyConfig) {
   // eleventyConfig.addPairedShortcode('quotedthread', shortcodes.quotedthreadShortcode);
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
+
+  eleventyConfig.addShortcode("umami", function () {
+    // Only insert tracking on production builds
+    if (process.env.ELEVENTY_ENV === "production" || process.env.NODE_ENV === "production") {
+      return `<script defer src="https://umami.hypnagaga.com/script.js" data-website-id="5b310c0d-84a4-4435-a4f4-a3c093a1b07a"></script>`;
+    }
+    return ""; // No script in dev builds
+  });
+
   // Custom shortcode for the post feature image to add pagefind attribute
   eleventyConfig.addAsyncShortcode('featureImage', async (src, alt, credit) => {
     // call the original image shortcode with arguments for a feature image
