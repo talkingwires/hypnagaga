@@ -52,15 +52,15 @@ export default async function (eleventyConfig) {
   // ---------------------  Plugins
   eleventyConfig.addPlugin(plugins.htmlConfig);
   eleventyConfig.addPlugin(plugins.drafts);
-
   eleventyConfig.addPlugin(plugins.EleventyRenderPlugin);
   eleventyConfig.addPlugin(plugins.rss);
   eleventyConfig.addPlugin(plugins.syntaxHighlight);
-
   eleventyConfig.addPlugin(plugins.webc, {
     components: ['./src/_includes/webc/**/*.webc'],
     useTransform: true
-  });
+  })
+
+  eleventyConfig.addPlugin(plugins.EleventyNavigationPlugin);
 
   eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
     formats: ['webp', 'jpeg'],

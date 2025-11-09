@@ -1,7 +1,7 @@
 ---
 title: 'Hello, World'
 description: "An introduction, of sorts."
-date: 2025-09-01
+date: 2025-11-11
 tags: ['self']
 ---
 

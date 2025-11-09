@@ -7,6 +7,9 @@ pagination:
 permalink: /tags/{{ tag | slugify }}/
 eleventyComputed:
   title: '{{ meta.blog.tagSingle }}: {{ tag }}'
+  eleventyNavigation:
+    key: '{{ tag }}'
+    parent: Stories
 ---
 
 <custom-masonry layout="50-50">

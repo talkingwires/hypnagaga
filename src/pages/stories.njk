@@ -1,0 +1,23 @@
+---
+layout: base
+permalink: /stories/
+title: 'Stories'
+description: 'asdf'
+eleventyNavigation:
+  key: Stories
+---
+
+<div class="wrapper">
+  <header class="full | section" style="--spot-color: var(--color-secondary)">
+    <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
+      <h1 class="text-center" style="color: var(--color-light);">{{ title }}</h1>
+    </div>
+
+    {% svg "divider/triangle", null, "divider" %}
+  </header>
+
+  <div class="region flow prose" style="--region-space-top: var(--space-xl-2xl)">
+
+{{ collections.all | eleventyNavigation('Stories') | eleventyNavigationToHtml | safe }}
+
+</div>

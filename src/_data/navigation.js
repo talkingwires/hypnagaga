@@ -1,12 +1,16 @@
 export default {
   top: [
     {
-      text: 'About',
-      url: '/about/'
+      text: 'Why',
+      url: '/why/'
     },
     {
-      text: 'Blog',
-      url: '/blog/'
+      text: 'Thoughts',
+      url: '/thoughts/'
+    },
+    {
+      text: 'Stories',
+      url: '/stories/'
     },
     {
       text: 'Search',
